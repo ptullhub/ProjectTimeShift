@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"C:\\Users\\Peyton\\Documents\\GitHub\\ProjectTimeShift\\TimeShift\\Source\\TimeShift\\TimeShift.Build.cs",
+		"C:\\Users\\Peyton\\Documents\\GitHub\\ProjectTimeShift\\TimeShift\\Source\\TimeShift.Target.cs",
+		"C:\\Users\\Peyton\\Documents\\GitHub\\ProjectTimeShift\\TimeShift\\Source\\TimeShiftEditor.Target.cs"
+	],
+	"EngineVersion": "5.4.4"
+}

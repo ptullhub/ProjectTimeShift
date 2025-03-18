@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "TimeShift",
+			"Path": "..\\Source\\TimeShift.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "TimeShiftEditor",
+			"Path": "..\\Source\\TimeShiftEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\peyton\\documents\\github\\projecttimeshift\\timeshift\\source\\timeshift\\timeshift.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\peyton\\documents\\github\\projecttimeshift\\timeshift\\intermediate\\build\\win64\\x64\\timeshifteditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\peyton\\documents\\github\\projecttimeshift\\timeshift\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\timeshift\\definitions.timeshift.h",
+            "c:\\users\\peyton\\documents\\github\\projecttimeshift\\timeshift\\source\\timeshift\\timeshift.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
