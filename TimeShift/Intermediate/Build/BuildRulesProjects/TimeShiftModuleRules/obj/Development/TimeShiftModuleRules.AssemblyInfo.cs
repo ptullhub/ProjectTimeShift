@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TimeShiftModuleRules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Development")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09a2af5125488955b3248e49c94dd2fae284db34")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71e09b0f1cd63b5c1428af3a8133152cce2a4848")]
 [assembly: System.Reflection.AssemblyProductAttribute("TimeShiftModuleRules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TimeShiftModuleRules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

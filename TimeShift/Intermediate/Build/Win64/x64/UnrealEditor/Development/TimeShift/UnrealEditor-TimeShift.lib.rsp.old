@@ -1,0 +1,12 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-TimeShift.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Users\Peyton\Documents\GitHub\ProjectTimeShift\TimeShift\Intermediate\Build\Win64\x64\TimeShiftEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h.obj"
+"C:\Users\Peyton\Documents\GitHub\ProjectTimeShift\TimeShift\Intermediate\Build\Win64\x64\UnrealEditor\Development\TimeShift\TimeShift.cpp.obj"
+"C:\Users\Peyton\Documents\GitHub\ProjectTimeShift\TimeShift\Intermediate\Build\Win64\x64\UnrealEditor\Development\TimeShift\Default.rc2.res"
+/OUT:"C:\Users\Peyton\Documents\GitHub\ProjectTimeShift\TimeShift\Intermediate\Build\Win64\x64\UnrealEditor\Development\TimeShift\UnrealEditor-TimeShift.lib"
