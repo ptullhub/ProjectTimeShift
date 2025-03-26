@@ -11,6 +11,9 @@
     <None Include="..\..\Source\TimeShiftEditor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.editorconfig" />
+    <None Include="..\..\.vsconfig" />
+    <None Include="..\..\shadertoolsconfig.json" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
     </Filter>
@@ -37,6 +40,15 @@
     </ClCompile>
     <ClInclude Include="..\..\Source\TimeShift\TimeShift.h">
       <Filter>Source\TimeShift</Filter>
+    </ClInclude>
+    <Filter Include="Source\TimeShift\Private">
+      <UniqueIdentifier>{5A28CE28-3382-3172-ACA7-69D9AD67ABAD}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\TimeShift\Private\FirstPersonPlayer.cpp">
+      <Filter>Source\TimeShift\Private</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\TimeShift\Private\FirstPersonPlayer.h">
+      <Filter>Source\TimeShift\Private</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
