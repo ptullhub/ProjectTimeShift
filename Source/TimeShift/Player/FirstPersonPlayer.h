@@ -38,4 +38,7 @@ protected:
 
 	void CameraPitch(float inputY);
 	void CameraYaw(float inputX);
+
+	// Head tilt function
+	void HeadTilt(float deltaTime);
 };
