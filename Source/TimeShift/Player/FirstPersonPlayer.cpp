@@ -1,17 +1,18 @@
 #include "Timeshift/Player/FirstPersonPlayer.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
-#include "Kismet/KismetMathLibrary.h"
 
 // Sets default values
 AFirstPersonPlayer::AFirstPersonPlayer()
 {
+	// Set this character to call Tick() every frame.
 	PrimaryActorTick.bCanEverTick = true;
 
 	// Camera setup
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Player Camera"));
 	Camera->SetupAttachment(RootComponent);
 	Camera->bUsePawnControlRotation = true;
+
 }
 
 // Called when the game starts or when spawned
@@ -25,8 +26,8 @@ void AFirstPersonPlayer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	// Update head tilt effect
-	UpdateHeadTilt(DeltaTime);
+	// Apply head tilt based on movement input
+	HeadTilt(DeltaTime);
 }
 
 // Called to bind functionality to input
@@ -34,7 +35,7 @@ void AFirstPersonPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	// Movement bindings
+	// Basic movement control bindings
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAxis("MoveForwardBackward", this, &AFirstPersonPlayer::MoveForwardBackward);
 	PlayerInputComponent->BindAxis("MoveLeftRight", this, &AFirstPersonPlayer::MoveLeftRight);
@@ -64,42 +65,23 @@ void AFirstPersonPlayer::CameraYaw(float inputX)
 	AddControllerYawInput(inputX);
 }
 
-void AFirstPersonPlayer::UpdateHeadTilt(float DeltaTime)
+void AFirstPersonPlayer::HeadTilt(float deltaTime)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Hello"));
-	// Get character velocity and check if moving
-	float Speed = GetVelocity().Size();
-	bool bIsMoving = Speed > 0;
+	// Get lateral movement input
+	float MoveInput = GetInputAxisValue("MoveLeftRight");
 
-	// Check if character is NOT falling
-	bool bIsOnGround = GetCharacterMovement()->IsMovingOnGround();
+	// UE_LOG(LogTemp, Warning, TEXT("HeadTilt Called - MoveInput: %f"), MoveInput);
 
-	// Get input axis value
-	float StrafeInput = GetInputAxisValue("MoveLeftRight");
-	bool bIsStrafing = FMath::Abs(StrafeInput) > 0;
+	// Define max tilt angle (adjust for preference)
+	float MaxTiltAngle = 80.0f;
 
-	// Determine if tilting should happen
-	if (bIsMoving && bIsOnGround && bIsStrafing)
-	{
-		// Determine lean direction
-		float TargetTilt = (StrafeInput > 0) ? -LeanAngle : LeanAngle;
+	// Target tilt based on movement direction
+	float TargetRoll = MoveInput * MaxTiltAngle; 
 
-		// Apply interpolation for smooth transition
-		FRotator CurrentRotation = GetControlRotation();
-		FRotator TargetRotation = FRotator(CurrentRotation.Pitch, CurrentRotation.Yaw, TargetTilt);
-		FRotator NewRotation = FMath::RInterpTo(CurrentRotation, TargetRotation, DeltaTime, LeanInterpSpeed);
+	// Interpolate smoothly
+	FRotator CurrentRotation = Camera->GetRelativeRotation();
+	float NewRoll = FMath::FInterpTo(CurrentRotation.Roll, TargetRoll, deltaTime, 5.0f);
 
-		// Set control rotation
-		GetController()->SetControlRotation(NewRotation);
-	}
-	else
-	{
-		// Reset tilt when not moving or strafing
-		FRotator CurrentRotation = GetControlRotation();
-		FRotator TargetRotation = FRotator(CurrentRotation.Pitch, CurrentRotation.Yaw, 0.0f);
-		FRotator NewRotation = FMath::RInterpTo(CurrentRotation, TargetRotation, DeltaTime, LeanInterpSpeed);
-
-		// Set control rotation
-		GetController()->SetControlRotation(NewRotation);
-	}
+	// Apply new tilt to camera
+	Camera->SetRelativeRotation(FRotator(CurrentRotation.Pitch, CurrentRotation.Yaw, NewRoll));
 }
