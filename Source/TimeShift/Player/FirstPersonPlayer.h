@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Misc/OutputDeviceNull.h"
 #include "GameFramework/Character.h"
 #include "FirstPersonPlayer.generated.h"
 
@@ -26,6 +27,7 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+
 protected:
 
 	// Define camera component class and mark as editable anywhere
@@ -39,6 +41,15 @@ protected:
 	void CameraPitch(float inputY);
 	void CameraYaw(float inputX);
 
-	// Head tilt function
-	void HeadTilt(float deltaTime);
+	// Head Tilt Function
+	void UpdateHeadTilt(float DeltaTime);
+
+	// Leaning angle
+	UPROPERTY(EditAnywhere, Category = "Head Tilt")
+	float LeanAngle = 5.0f;
+
+	// Interpolation Speed
+	UPROPERTY(EditAnywhere, Category = "Head Tilt")
+	float LeanInterpSpeed = 5.0f;
+
 };
